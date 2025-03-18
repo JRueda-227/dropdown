@@ -1,24 +1,36 @@
-export { Dropdown }
-
-const toggle = document.querySelector('#dropdown-toggle');
-const menu = document.querySelector('#dropdown-menu');
-
-toggle.addEventListener('mouseover', () => {
-    menu.style.display = 'block';
-});
-toggle.addEventListener('mouseout', () => {
-    menu.style.display = 'none';
-});
-menu.addEventListener('mouseover', () => {
-    menu.style.display = 'block';
-});
-menu.addEventListener('mouseout', () => {
-    menu.style.display = 'none';
-});
-
-
 class Dropdown {
-    constructor() {
-        
+    constructor(toggle, menu) {
+        this.toggle = toggle;
+        this.menu = menu;
+
+        this.init();
+    }
+
+    showMenu() {
+        this.menu.style.display = 'block';
+    }
+
+    hideMenu() {
+        this.menu.style.display = 'none';
+    }
+
+    init() {
+        this.toggle.addEventListener('mouseover', () => {
+            this.showMenu();
+        });
+
+        this.toggle.addEventListener('mouseout', () => {
+            this.hideMenu();
+        });
+
+        this.menu.addEventListener('mouseover', () => {
+            this.showMenu();
+        });
+
+        this.menu.addEventListener('mouseout', () => {
+            this.hideMenu();
+        });
     }
 }
+
+export { Dropdown }
